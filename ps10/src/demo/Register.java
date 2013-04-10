@@ -65,7 +65,13 @@ public class Register extends HttpServlet {
 		String pwd2 = req.getParameter("pwd2");
 		String firstName = req.getParameter("firstName");
 		String lastName = req.getParameter("lastName");
-		Person person = new Person(login, login, login);
+		
+		//CHECK FIELDS.. 
+		req.setAttribute("login", "WTF NOT RIGHT.");
+		
+		//Person p = new Person(login, login, login);
+		Credentials c = new Credentials(firstName, lastName, login, pwd1);
+		req.setAttribute("credentials", c);
 		if(true)
 			req.getRequestDispatcher("/WEB-INF/views/success.jsp").forward(req, rsp);
 		else

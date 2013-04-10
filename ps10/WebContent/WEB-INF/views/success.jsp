@@ -12,7 +12,7 @@
 <form action="inventory.jsp">   <button>View Inventory</button>  </form>
 
 <p>
-Login:  ${person.name}
+Login:  ${credentials.login}
 
 </p>
 
