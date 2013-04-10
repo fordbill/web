@@ -21,7 +21,11 @@ First:	${credentials.firstName}
 <br>
 Last:	${credentials.lastName}
 <br>
+Phone: ${credentials.phone}
+<br>
+Address:  ${credentials.address}
 </b>
+
 </p>
 
 

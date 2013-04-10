@@ -73,12 +73,16 @@ public class Register extends HttpServlet {
 		 * $                  # end-of-string	
 		 */
 		
-		String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^!&+=])(?=\\S+$).{8,}$";
+		String pattern = "((?=.*[a-z])(?=.*\\d)(?=.*[@#$%])(?=.*[A-Z]).{6,16})";
+		
+		String pattern2 = "^([a-z]|[A-Z]){4, 15}$";
 		
 		String pwd1 = req.getParameter("pwd1");
 		String pwd2 = req.getParameter("pwd2");
 		String firstName = req.getParameter("firstName");
 		String lastName = req.getParameter("lastName");
+		String phone = req.getParameter("phone");
+		String address = req.getParameter("address");
 		
 		if(!pwd1.equals(pwd2))
 		{
@@ -96,7 +100,7 @@ public class Register extends HttpServlet {
 		req.setAttribute("login", "WTF NOT RIGHT.");
 		
 		//Person p = new Person(login, login, login);
-		Credentials c = new Credentials(firstName, lastName, login, pwd1);
+		Credentials c = new Credentials(firstName, lastName, login, pwd1, phone, address);
 		req.setAttribute("credentials", c);
 		if(true)
 			req.getRequestDispatcher("/WEB-INF/views/success.jsp").forward(req, rsp);

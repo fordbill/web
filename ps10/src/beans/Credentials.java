@@ -6,14 +6,30 @@ public class Credentials {
 	private String lastName;
 	private String login;
 	private String password;
+	private String address;
+	private String phone;
 	
-	public Credentials(String fname, String lname, String login, String password) {
+	public Credentials(String fname, String lname, String login, String password, String ph, String ad) 
+	{
 		super();
 		this.firstName = fname;
 		this.lastName = lname;
 		this.login = login;
 		this.password = password;
+		this.phone = ph;
+		this.address = ad;
 	}
+	public String getPhone()
+	{
+		return phone;
+	}
+	
+	public String getAddress()
+	{
+		return address;
+	}
+	
+	
 	public String getPassword()
 	{
 		return password;
