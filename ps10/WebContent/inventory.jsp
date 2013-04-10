@@ -15,7 +15,7 @@
   <form id="form1" name="form1" method="post" action="index.jsp">
   <input type="submit" name="Logout" id="logout" value="Logout" />
   	<table> 
-    <hr><td>Category</td><td>Description</td><td>Value</td><td>Serial #</td><td> Date</td>
+    <tr><th>Category</tr><th>Description</td><td>Value</td><td>Serial #</td><td> Date</td>
 
     </table>
     

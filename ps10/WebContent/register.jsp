@@ -8,6 +8,14 @@
  <script src="http://code.jquery.com/jquery-1.5.js"></script>
     <script>
     $(document).ready(function () {
+    	// wait for the DOM to be loaded 
+        $(document).ready(function() { 
+            // bind 'myForm' and provide a simple callback function 
+            $('#register_form').ajaxForm(function() { 
+                alert("Thank you for your comment!"); 
+            }); 
+        }); 
+    	
 
     	  $('#address').keypress(function (event) {
     	    var max = 45;
