@@ -46,10 +46,10 @@
     
     <form action="index.jsp" method="post">
     <p align="center">
-      <input type="submit" name="cancel"  tabindex=7 id="cancel" value="Cancel" /> </p>
+      <input type="submit" name="cancel"  tabindex=7 id="cancel" value="Cancel" /> 
       </form>
 
-
+    </p>
   <p align="center">&nbsp;</p>
   
 
