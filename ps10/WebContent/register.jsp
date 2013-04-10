@@ -113,7 +113,6 @@
       <label for="login">Login:</label>
       <input type="text" name="login" size="18" tabindex=1 id="login" />
       <div align="center" id="textleft2">15 characters left</div>
-    </p>
     <p align="center">
       <label for="pwd1">Password:</label>
       <input type="password" name="pwd1" tabindex=2 id="pwd1" />
@@ -134,15 +133,15 @@
       <label for="phone">Phone:</label>
       <input type="text" name="phone" size="16" tabindex=5 id="phone" />
       <div align="center" id="textleft1">10 characters left</div>
-    </p>
+
     <p align="center">
       <label for="address">Address:</label>
-      <textarea cols="30" rows="4" name="address" size="45" tabindex=5 id="address"></textarea>
+      <textarea cols="30" rows="4" name="address" tabindex=5 id="address"></textarea>
        <div align="center" id="textleft">45 characters left</div>
-    </p>
+
     <p align="center">
       <input type="submit" name="register" tabindex=6 id="register" value="Register" />
-    </p>
+
     </form>
     
     <form action="index.jsp" method="post">
@@ -150,7 +149,7 @@
       <input type="submit" name="cancel"  tabindex=7 id="cancel" value="Cancel" /> 
       </form>
 
-    </p>
+
   <p align="center">&nbsp;</p>
   
 
