@@ -12,7 +12,7 @@
 <div class="ps10">
  
 
-  <h1 align="center" >WELCOME HomeBoy </h1>
+  <h1 align="center" >WELCOME</h1>
   
   <form action="register.jsp" method="post">
   <p align="right">
