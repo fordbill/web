@@ -105,41 +105,35 @@
 </head>
 
 <body>
-<div class="register">
+<div align="center" class="register">
   <form id="register_form" name="register_form" method="post" action="Register">
-  <h1> </h1>
-  <p align="center">&nbsp;</p>
-    <p align="center">
+  <h1>Please Register. :)</h1>
+<br>
       <label for="login">Login:</label>
       <input type="text" name="login" size="18" tabindex=1 id="login" />
       <div align="center" id="textleft2">15 characters left</div>
-    <p align="center">
+<br>
       <label for="pwd1">Password:</label>
       <input type="password" name="pwd1" tabindex=2 id="pwd1" />
-    </p>
-    <p align="center">
+<br>
       <label for="pwd2">Verify Password:</label>
       <input type="password" name="pwd2" tabindex=3 id="pwd2" />
-    </p>
-    <p align="center">
+   <br>
       <label for="firstName">First Name:</label>
       <input type="text" name="firstName" size="20" tabindex=4 id="firstName" />
-    </p>
-    <p align="center">
+
+<br>
       <label for="lastName">Last Name:</label>
       <input type="text" name="lastName" size="20" tabindex=5 id="lastName" />
-    </p>
-    <p align="center">
+<br>
       <label for="phone">Phone:</label>
       <input type="text" name="phone" size="16" tabindex=5 id="phone" />
       <div align="center" id="textleft1">10 characters left</div>
-
-    <p align="center">
+<br>
       <label for="address">Address:</label>
       <textarea cols="30" rows="4" name="address" tabindex=5 id="address"></textarea>
        <div align="center" id="textleft">45 characters left</div>
-
-    <p align="center">
+<br>
       <input type="submit" name="register" tabindex=6 id="register" value="Register" />
 
     </form>
