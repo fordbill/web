@@ -16,7 +16,7 @@
 
 <body>
 <div class="register">
-  <form id="register_form" name="register_form" method="post" action="register">
+  <form id="register_form" name="register_form" method="post" action="Register">
   <h1> </h1>
   <p align="center">&nbsp;</p>
     <p align="center">
