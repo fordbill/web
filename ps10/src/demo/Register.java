@@ -61,10 +61,36 @@ public class Register extends HttpServlet {
 		req.setAttribute("person", p);
 		*/
 		String login = req.getParameter("login");
+		//8 chars 1 upper case and 1 number...
+		/*
+		 * ^                  # start-of-string
+		 *	(?=.*[0-9])       # a digit must occur at least once
+		 *	(?=.*[a-z])       # a lower case letter must occur at least once
+		 *	(?=.*[A-Z])       # an upper case letter must occur at least once
+		 *	(?=.*[@#$%^&+=])  # a special character must occur at least once
+		 *	(?=\S+$)          # no whitespace allowed in the entire string
+		 *	.{8,}             # anything, at least eight places though
+		 * $                  # end-of-string	
+		 */
+		
+		String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^!&+=])(?=\\S+$).{8,}$";
+		
 		String pwd1 = req.getParameter("pwd1");
 		String pwd2 = req.getParameter("pwd2");
 		String firstName = req.getParameter("firstName");
 		String lastName = req.getParameter("lastName");
+		
+		if(!pwd1.equals(pwd2))
+		{
+			//COMPLAIN... The passwords were not the same.
+			pwd1 = "MIS-MATCH";
+		}
+		else if(!pwd1.matches(pattern))
+		{
+			//Complain... INVALID PASSWORD.. Must
+			pwd1 = "INVALID";
+		}
+		
 		
 		//CHECK FIELDS.. 
 		req.setAttribute("login", "WTF NOT RIGHT.");

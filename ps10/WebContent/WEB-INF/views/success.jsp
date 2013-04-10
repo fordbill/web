@@ -12,8 +12,16 @@
 <form action="inventory.jsp">   <button>View Inventory</button>  </form>
 
 <p>
+<b>
 Login:  ${credentials.login}
-
+<br>
+Password:	${credentials.password}
+<br>
+First:	${credentials.firstName}
+<br>
+Last:	${credentials.lastName}
+<br>
+</b>
 </p>
 
 
