@@ -81,9 +81,9 @@
 		<blockquote>
 			<p>We are the BEST. </p>
 		</blockquote>
-		<div class="intro" >
+		<div class="intro" width="20%">
 		Home Inventory is used to keep track of all your valuables.  This could include your car, lawn mower, 
-		big screen TV or Jewelry.  You can take pictures of all of these items and store them into the database.
+		big screen TV or Jewlrey.  You can take pictures of all of these items and store them into the database.
 		Then if a fire, earthquake, or burglary happens you can login and print a report for any missing item.
 		</div>
 
