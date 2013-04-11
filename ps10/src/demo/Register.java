@@ -74,7 +74,7 @@ public class Register extends HttpServlet {
 		
 		String pattern = "((?=.*[a-z])(?=.*\\d)(?=.*[@#$%])(?=.*[A-Z]).{6,16})";
 		
-		String pattern2 = "^([a-z]|[A-Z]){4, 15}$";
+		//String pattern2 = "^([a-z]|[A-Z]){4, 15}$";
 		
 		String pwd1 = req.getParameter("pwd1");
 		String pwd2 = req.getParameter("pwd2");
