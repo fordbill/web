@@ -18,6 +18,7 @@
 			});
 		});
 
+
 		$('#address').keypress(function(event) {
 			var max = 45;
 			var len = $(this).val().length;
@@ -112,6 +113,7 @@
 
 </head>
 
+<<<<<<< HEAD
 <body class = "login">
 	<div align="center" class="register">
 		<form id="register_form" name="register_form" method="post" action="Register">
@@ -167,6 +169,26 @@
 			<br>
 			<br>
 		</form>
+=======
+<body>
+<div align="center" class="register">
+  <form id="register_form" name="register_form" method="post" action="Register">
+  <h1>Please Register. :)</h1>
+<br>
+      <label for="login">Login:</label>
+      <input type="text" name="login" size="18" tabindex=1 id="login" />
+      <div align="center" id="textleft2">15 characters left</div>
+<br>
+      <label for="pwd1">Password:</label>
+      <input type="password" name="pwd1" tabindex=2 id="pwd1" />
+      <div align="center" id="textleft01">10 characters left</div>
+<br>
+      <label for="pwd2">Verify Password:</label>
+      <input type="password" name="pwd2" tabindex=3 id="pwd2" />
+   <br>
+      <label for="firstName">First Name:</label>
+      <input type="text" name="firstName" size="20" tabindex=4 id="firstName" />
+>>>>>>> branch 'master' of https://github.com/fordbill/web.git
 
 		<form action="index.jsp" method="post">
 			<p align="center">

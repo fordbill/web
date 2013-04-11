@@ -18,19 +18,10 @@
   <input type="submit" name="Logout" id="logout" value="Logout" />
   
   	<table> 
-    <tr><th>Category</th><th>Description</th><th>Value</th><th>Serial #</th><th> Date</th></tr>
-    <c:forEach var="item" items="${Items}">
-    <tr><td> ${item.category} </td>
-    <td> ${item.description} </td>
-    <td> ${item.value} </td>
-    <td> ${item.serial} </td>
-    <td> ${item.date} </td>
-    <td onclick="displayitem(this);"> ${item.picture} </td>
-    </tr>
-    </c:forEach>
+    <tr><th>Category</th><th>Description</th><th>Value</th><th>Serial #</th><th>Date</th></tr>
     
     </table>
-	</form>    
+    
 </div>
 </body>
 </html>
