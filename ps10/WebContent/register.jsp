@@ -17,6 +17,7 @@
         }); 
     	
 
+    	
     	  $('#address').keypress(function (event) {
     	    var max = 45;
     	    var len = $(this).val().length;
@@ -123,6 +124,7 @@
 <br>
       <label for="pwd1">Password:</label>
       <input type="password" name="pwd1" tabindex=2 id="pwd1" />
+      <div align="center" id="textleft01">10 characters left</div>
 <br>
       <label for="pwd2">Verify Password:</label>
       <input type="password" name="pwd2" tabindex=3 id="pwd2" />

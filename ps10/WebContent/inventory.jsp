@@ -16,7 +16,7 @@
   <input type="submit" name="Logout" id="logout" value="Logout" />
   
   	<table> 
-    <tr><th>Category</th><th>Description</th><th>Value</th><th>Serial #</th><th> Date</th></tr>
+    <tr><th>Category</th><th>Description</th><th>Value</th><th>Serial #</th><th>Date</th></tr>
     
     </table>
     
