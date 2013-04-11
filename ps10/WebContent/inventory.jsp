@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -18,12 +19,15 @@
   
   	<table> 
     <tr><th>Category</th><th>Description</th><th>Value</th><th>Serial #</th><th> Date</th></tr>
+    <c:forEach var="item" items="${Items}">
     <tr><td> ${item.category} </td>
     <td> ${item.description} </td>
     <td> ${item.value} </td>
     <td> ${item.serial} </td>
     <td> ${item.date} </td>
     <td onclick="displayitem(this);"> ${item.picture} </td>
+    </tr>
+    </c:forEach>
     
     </table>
 	</form>    

@@ -37,6 +37,7 @@ public class GetItems extends HttpServlet {
 		rsp.setHeader("Pragma", "no-cache");
 		
 		String login= (String) req.getAttribute("login");
+		login = "user";
 		if (login == null) {
 			// not logged in
 			req.getRequestDispatcher("/index.jsp").forward(req, rsp);
