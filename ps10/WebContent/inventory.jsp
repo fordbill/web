@@ -19,8 +19,8 @@
   
   	<table> 
     <tr><th>Category</th><th>Description</th><th>Value</th><th>Serial #</th><th>Date</th></tr>
+    
     </table>
-</form>
     
 </div>
 </body>
