@@ -99,8 +99,8 @@ public class Register extends HttpServlet {
 		req.setAttribute("login", "WTF NOT RIGHT.");
 		
 		//Person p = new Person(login, login, login);
-		Credentials c = new Credentials(firstName, lastName, login, pwd1, phone, address);
-		req.setAttribute("credentials", c);
+		Credentials credentials = new Credentials(firstName, lastName, login, pwd1, phone, address);
+		req.setAttribute("credentials", credentials);
 		if(true)
 			req.getRequestDispatcher("/WEB-INF/views/success.jsp").forward(req, rsp);
 		else

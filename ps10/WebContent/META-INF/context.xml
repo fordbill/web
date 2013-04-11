@@ -5,20 +5,9 @@
   <!-- Together with a corresponding entry in web.xml, this configures -->
   <!-- a data source that reads from a database. -->
        
-  <Resource
-    name="jdbc/CollectionDB"
-    auth="Container"
-    type="javax.sql.DataSource"
-    driverClassName="com.mysql.jdbc.Driver"
-    url="jdbc:mysql://atr.eng.utah.edu/collection"
-    username="library"
-    password="library"
-    maxActive="2"
-    maxIdle="1"
-    maxWait="10000"
-   />
+  
     <Resource
-    name="jdbc/LibraryDB"
+    name="jdbc/InventoryDB"
     auth="Container"
     type="javax.sql.DataSource"
     driverClassName="com.mysql.jdbc.Driver"

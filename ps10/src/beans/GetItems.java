@@ -27,7 +27,7 @@ public class GetItems extends HttpServlet {
 
 	/**
 	 * Returns JSON object of the form {atTop: true/false, atBottom: true/false,
-	 * books: [...]}
+	 * inventory: [...]}
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse rsp)
 			throws ServletException, IOException {
@@ -35,6 +35,12 @@ public class GetItems extends HttpServlet {
 		// Turn off caching and grab the incoming prefix parameter
 		rsp.setHeader("Cache-Control", "no-cache");
 		rsp.setHeader("Pragma", "no-cache");
+		
+		JSONObject user = (JSONObject) req.getAttribute("user");
+		if (user == null) {
+			user = new JSONObject();
+		}
+			
 
 		// Get the value of the offset parameter
 		int offset = 0;
@@ -77,11 +83,12 @@ public class GetItems extends HttpServlet {
 			// tell us
 			// if we're at the bottom.
 
-			String query = "select * from inventory";
+			String query = "select * from inventory where login = ?";
 
 			query += "order by name ";
 			query += "limit ? " + "offset ?";
 			PreparedStatement stmt = dbLibrary.prepareStatement(query);
+			stmt.setString("login", user.login);
 			int paramcount = 1;
 			if (usefilter) {
 				stmt.setString(paramcount++, "%" + filter + "%");
@@ -106,9 +113,13 @@ public class GetItems extends HttpServlet {
 				if (count > DisplayCount) {
 					atBottom = false;
 				} else {
+					// category description value serial date
 					JSONObject obj = new JSONObject();
-					obj.put("cardnum", results.getString("cardnum"));
-					obj.put("name", results.getString("name"));
+					obj.put("category", results.getString("category"));
+					obj.put("description", results.getString("description"));
+					obj.put("value", results.getString("value"));
+					obj.put("serial", results.getString("serial"));
+					obj.put("date", results.getString("date"));
 					Items.put(obj);
 				}
 			}
