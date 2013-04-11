@@ -15,14 +15,10 @@
   <form id="form1" name="form1" method="post" action="index.jsp">
   <input type="submit" name="Logout" id="logout" value="Logout" />
   	<table> 
-    <tr><th>Category</tr><th>Description</td><td>Value</td><td>Serial #</td><td> Date</td>
+    <tr><th>Category</th><th>Description</th><th>Value</th><th>Serial #</th><th> Date</th></tr>
 
     </table>
     
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
   </form>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
