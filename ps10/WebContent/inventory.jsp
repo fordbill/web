@@ -18,7 +18,12 @@
   
   	<table> 
     <tr><th>Category</th><th>Description</th><th>Value</th><th>Serial #</th><th> Date</th></tr>
-    <tr><td> ${item.category}
+    <tr><td> ${item.category} </td>
+    <td> ${item.description} </td>
+    <td> ${item.value} </td>
+    <td> ${item.serial} </td>
+    <td> ${item.date} </td>
+    <td onclick="displayitem(this);"> ${item.picture} </td>
     
     </table>
 	</form>    

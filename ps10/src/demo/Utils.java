@@ -11,25 +11,13 @@ public class Utils {
 	// in WEB-INF/web.xml and META-INF/context.html.  It takes care of pooling
 	// DB connections.
 	
-	public static Connection openConnectionBooks (HttpServlet servlet) throws SQLException {
-		try {
-			Context initContext = new InitialContext();
-			Context envContext = 
-					(Context) initContext.lookup("java:comp/env");
-			DataSource ds = (DataSource) envContext.lookup("jdbc/CollectionDB");
-			return ds.getConnection();
-		}
-		catch (NamingException e) {
-			return null;
-		}
-	}
 	
-	public static Connection openConnectionLibrary (HttpServlet servlet) throws SQLException {
+	public static Connection openConnection(HttpServlet servlet) throws SQLException {
 		try {
 			Context initContext = new InitialContext();
 			Context envContext = 
 					(Context) initContext.lookup("java:comp/env");
-			DataSource ds = (DataSource) envContext.lookup("jdbc/LibraryDB");
+			DataSource ds = (DataSource) envContext.lookup("jdbc/InventoryDB");
 			return ds.getConnection();
 		}
 		catch (NamingException e) {

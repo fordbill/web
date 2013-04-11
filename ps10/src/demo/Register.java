@@ -1,6 +1,10 @@
 package demo;
 
 import java.io.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -82,29 +86,62 @@ public class Register extends HttpServlet {
 		String lastName = req.getParameter("lastName");
 		String phone = req.getParameter("phone");
 		String address = req.getParameter("address");
+		boolean success = true;
 		
 		if(!pwd1.equals(pwd2))
 		{
 			//COMPLAIN... The passwords were not the same.
 			pwd1 = "MIS-MATCH";
+			success = false;
+			
 		}
 		else if(!pwd1.matches(pattern))
 		{
 			//Complain... INVALID PASSWORD.. Must
 			pwd1 = "INVALID";
+			success = false;
 		}
 		
 		
 		//CHECK FIELDS.. 
-		req.setAttribute("login", "WTF NOT RIGHT.");
+		req.setAttribute("login", "NOT RIGHT!");
 		
 		//Person p = new Person(login, login, login);
 		Credentials credentials = new Credentials(firstName, lastName, login, pwd1, phone, address);
 		req.setAttribute("credentials", credentials);
-		if(true)
-			req.getRequestDispatcher("/WEB-INF/views/success.jsp").forward(req, rsp);
+		if(success) {
+			if (registerUser(credentials))
+				req.getRequestDispatcher("/WEB-INF/views/success.jsp").forward(req, rsp);
+			else req.getRequestDispatcher("/register.jsp").forward(req, rsp);
+		}
 		else
 			req.getRequestDispatcher("/register.jsp").forward(req, rsp);
+	}
+
+
+	private boolean registerUser(Credentials c) {
+		Connection dbInventory = null;
+		try {
+			dbInventory= Utils.openConnection(this);
+			String query = 
+			"INSERT INTO users " +
+			"(`login`, `password`,`name`,`address`,`phone`)" +
+			"VALUES(?,?,?,?,?)";
+			PreparedStatement stmt = dbInventory.prepareStatement(query);
+			stmt.setString(1,c.getLogin());
+			stmt.setString(1,c.getPassword());
+			stmt.setString(1,c.getfirstName() + " " + c.getlastName());
+			stmt.setString(1,c.getAddress());
+			stmt.setString(1,c.getPhone());
+			int rc = stmt.executeUpdate();
+			stmt.close();
+			dbInventory.close();
+			return rc > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 
 }

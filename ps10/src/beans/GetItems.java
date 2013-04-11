@@ -36,11 +36,13 @@ public class GetItems extends HttpServlet {
 		rsp.setHeader("Cache-Control", "no-cache");
 		rsp.setHeader("Pragma", "no-cache");
 		
-		JSONObject user = (JSONObject) req.getAttribute("user");
-		if (user == null) {
-			user = new JSONObject();
+		String login= (String) req.getAttribute("login");
+		if (login == null) {
+			// not logged in
+			req.getRequestDispatcher("/index.jsp").forward(req, rsp);
 		}
-			
+
+		
 
 		// Get the value of the offset parameter
 		int offset = 0;
@@ -68,7 +70,7 @@ public class GetItems extends HttpServlet {
 		// Prepare to display Items
 		JSONArray Items = new JSONArray();
 
-		Connection dbLibrary = null;
+		Connection dbInventory = null;
 
 		boolean atTop = (offset == 0);
 		boolean atBottom = true;
@@ -77,7 +79,7 @@ public class GetItems extends HttpServlet {
 
 			// Open a connections
 
-			dbLibrary = Utils.openConnectionLibrary(this);
+			dbInventory= Utils.openConnection(this);
 
 			// Get the next 11 books. We only return 10 of them, but this will
 			// tell us
@@ -85,10 +87,12 @@ public class GetItems extends HttpServlet {
 
 			String query = "select * from inventory where login = ?";
 
-			query += "order by name ";
-			query += "limit ? " + "offset ?";
-			PreparedStatement stmt = dbLibrary.prepareStatement(query);
-			stmt.setString("login", user.login);
+			
+			query += "order by ?";
+			//query += "limit ? " + "offset ?";
+			PreparedStatement stmt = dbInventory.prepareStatement(query);
+			stmt.setString(1, login);
+			/*
 			int paramcount = 1;
 			if (usefilter) {
 				stmt.setString(paramcount++, "%" + filter + "%");
@@ -98,9 +102,11 @@ public class GetItems extends HttpServlet {
 			if (useorderby) {
 				stmt.setString(paramcount++, sortby);
 			}
-
+			
+			
 			stmt.setInt(paramcount++, DisplayCount + 1);
 			stmt.setInt(paramcount, offset * DisplayCount);
+			*/
 			ResultSet results = stmt.executeQuery();
 
 			// Put the DisplayCount results into the array. If there is
@@ -108,12 +114,14 @@ public class GetItems extends HttpServlet {
 			// not yet at the bottom.
 			// user results.last() instead of count
 			int count = 0;
+			
 			while (results.next()) {
 				count++;
 				if (count > DisplayCount) {
 					atBottom = false;
 				} else {
 					// category description value serial date
+					
 					JSONObject obj = new JSONObject();
 					obj.put("category", results.getString("category"));
 					obj.put("description", results.getString("description"));
@@ -132,7 +140,7 @@ public class GetItems extends HttpServlet {
 			e.printStackTrace();
 			return;
 		} finally {
-			Utils.close(dbLibrary);
+			Utils.close(dbInventory);
 
 		}
 
