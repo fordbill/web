@@ -1,9 +1,9 @@
 @CHARSET "ISO-8859-1";
 <!---
+	Alma Knudson
 	Bill Ford
 	u0850249
-	PS1
-	1/23/2013
+	PS10
 ---> 
 		
 h2 {text-align:left; color:blue}
@@ -15,5 +15,4 @@ background-color:#b0c4de;
 
 .intro {width:20%}
 .Welcome {width:50%}
-
-
+.alnright { text-align: right; }

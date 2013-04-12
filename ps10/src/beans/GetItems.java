@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.*;
-import demo.Helpers.*;
 import demo.Utils;
 
 @WebServlet("/Getitems")
@@ -127,6 +126,7 @@ public class GetItems extends HttpServlet {
 						obj.put("value", results.getString("value"));
 						obj.put("serial", results.getString("serial"));
 						obj.put("date", results.getString("date"));
+						obj.put("fname", results.getString("fname"));
 						Items.put(obj);
 					}
 				}
@@ -144,39 +144,40 @@ public class GetItems extends HttpServlet {
 			}
 		} else {
 			try {
-
 				JSONObject obj = new JSONObject();
 				obj.put("category", "jewelry");
 				obj.put("description", "Diamond Necklace");
 				obj.put("value", "10000.00");
 				obj.put("serial", "98712345");
 				obj.put("date", "2013-04-12");
+				obj.put("fname","necklace.jpg");
 				Items.put(obj);
 
 				obj = new JSONObject();
-
 				obj.put("category", "Car");
 				obj.put("description", "Ford Expedition");
 				obj.put("value", "10.00");
 				obj.put("serial", "V12345678");
 				obj.put("date", "2013-04-12");
+				obj.put("fname","car.jpg");
 				Items.put(obj);
 
 				obj = new JSONObject();
-
 				obj.put("category", "Electronics");
 				obj.put("description", "XBox");
 				obj.put("value", "100.00");
 				obj.put("serial", "98712345");
 				obj.put("date", "2013-04-12");
+				obj.put("fname","xbox.jpg");
 				Items.put(obj);
-				obj = new JSONObject();
 
+				obj = new JSONObject();
 				obj.put("category", "Electronics");
 				obj.put("description", "Laptop");
 				obj.put("value", "500.00");
 				obj.put("serial", "98712345");
 				obj.put("date", "2013-04-12");
+				obj.put("fname","laptop.jpg");
 				Items.put(obj);
 
 			} catch (JSONException e) {

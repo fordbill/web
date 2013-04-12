@@ -21,14 +21,15 @@
 	fs
 	function refresh(result) {
 		var contents = "<tr><th>Category</th><th>Description</th><th>Value</th>"
-				+ "<th>Serial #</th><th>Date</th>fs</tr>";
+				+ "<th>Serial #</th><th>Date</th><th>Picture</th></tr>";
 
 		for ( var i = 0; i < result.Items.length; i++) {
 			contents += "<tr><td>" + result.Items[i].category + "</td><td>"
-					+ result.Items[i].description + "</td><td>"
+					+ result.Items[i].description + "</td><td class='alnright'>"
 					+ result.Items[i].value + "</td><td>"
 					+ result.Items[i].serial + "</td><td>"
-					+ result.Items[i].date + "</td></tr>\n";
+					+ result.Items[i].date + "</td><td>"
+					+ result.Items[i].fname + "</td></tr>\n";
 
 		}
 		$('#invtable').html(contents);
@@ -71,9 +72,7 @@
 		<table border="1" id="invtable"></table>
 		<p>
 			<input type="button" value="Next" id="next" onclick="next();" />
-		</p>
-
-		<p>
+		
 			<input type="button" value="Previous" id="previous" onclick="prev();" />
 		</p>
 
