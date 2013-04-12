@@ -90,23 +90,18 @@
   	    if (len >= max) {
 				event.preventDefault();
 			}
-
 		});
 
 		$('#login').keyup(function(event) {
 			var max = 15;
 			var len = $(this).val().length;
 			var char = max - len;
-
 			$('#textleft2').text(char + ' characters left');
-
 		});
-
 	});
 	
 	function verify()
 	{
-		
 		var login = document.getElementById("login");
 		var pwd1 = document.getElementById("pwd1");
 		var pwd2 = document.getElementById("pwd2");
@@ -115,7 +110,6 @@
 		var phone = document.getElementById("phone");
 		var address = document.getElementById("address");
 		var re = /((?=.*[a-z])(?=.*\d)(?=.*[@#$%])(?=.*[A-Z]).{6,16})/i;
-		
 		
 		if((login.value.length > 4) && (pwd1.value.match(re)) && (pwd1.value == pwd2.value)
 				&& (first.value.length > 2)  && (last.value.length > 4)  && (phone.value.length == 10)
@@ -135,8 +129,6 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Registration Page</title>
-
-
 </head>
 <body class = "login">
 	<div align="center" class="register">
