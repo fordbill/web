@@ -90,23 +90,18 @@
   	    if (len >= max) {
 				event.preventDefault();
 			}
-
 		});
 
 		$('#login').keyup(function(event) {
 			var max = 15;
 			var len = $(this).val().length;
 			var char = max - len;
-
 			$('#textleft2').text(char + ' characters left');
-
 		});
-
 	});
 	
 	function verify()
 	{
-		
 		var login = document.getElementById("login");
 		var pwd1 = document.getElementById("pwd1");
 		var pwd2 = document.getElementById("pwd2");
@@ -115,7 +110,6 @@
 		var phone = document.getElementById("phone");
 		var address = document.getElementById("address");
 		var re = /((?=.*[a-z])(?=.*\d)(?=.*[@#$%])(?=.*[A-Z]).{6,16})/i;
-		
 		
 		if((login.value.length > 4) && (pwd1.value.match(re)) && (pwd1.value == pwd2.value)
 				&& (first.value.length > 2)  && (last.value.length > 4)  && (phone.value.length == 10)
@@ -127,7 +121,6 @@
 		{
 			document.getElementById("error").innerHTML="Failed Login. ";
 		}
-			
 	}
 	
 	
@@ -136,63 +129,47 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Registration Page</title>
-
-
 </head>
 <body class = "login">
 	<div align="center" class="register">
-		<form id="register_form" name="register_form" method="post" action="Register">
-			<h1>Please Register.</h1>
+		<form id="register_form" name="register_form" method="post" action="/Register" >
+			<h1>Please Register</h1>
 			<br>
-			 <div style="color:#FF0000" align="center" id="error"></div>
+			<div style="color:#FF0000" align="center" id="error"></div>
 			<label for="login">Login:</label> 
 			<input type="text" 	name="login" size="18" tabindex=1 id="login" />
 			<div align="center" id="textleft2">15 characters left</div>
-			
 			<br> 
 			<br> 
-			
 			<label for="pwd1">Password:</label> 
 			<input type="password" name="pwd1" tabindex=2 id="pwd1" /> 
-			
 			<br> 
 			<br>
-			 
 			<label for="pwd2">Verify Password:</label> 
 			<input	type="password" name="pwd2" tabindex=3 id="pwd2" /> 
-			
 			<br> 
 			<br> 
-			
 			<label	for="firstName">First Name:</label> 
 			<input type="text" 	name="firstName" size="20" tabindex=4 id="firstName" /> 
-			
 			<br> 
 			<br> 
-			
 			<label for="lastName">Last Name:</label> 
 			<input type="text" name="lastName" size="20" tabindex=5 id="lastName" /> 
-			
 			<br>
 			<br>
-			 
 			<label for="phone">Phone:</label>
 			<input type="text" name="phone" size="16" tabindex=5 id="phone" />
 			<div align="center" id="textleft1">10 characters left</div>
-			
 			<br>
 			<br> 
-			
 			<label for="address">Address:</label>
 			<textarea cols="30" rows="4" name="address" tabindex=5 id="address"></textarea>
 			<div align="center" id="textleft">45 characters left</div>
+		</form>
 			
-			<br>
-			<br> 
-			</form>
-			<form id="jForm" name="jForm" method="post" action="javascript:verify()"> 
+		<form id="jForm" name="jForm" method="post" action="javascript:verify()"> 
 			<input type="submit" name="register" tabindex=6 id="register" value="Register" /> 
-			</form>
+		</form>
 		
 		<form action="index.jsp" method="post">
 			<p align="center">

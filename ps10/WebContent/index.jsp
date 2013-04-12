@@ -9,40 +9,18 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script>
-	$(document).ready(function() {
-		// wait for the DOM to be loaded 
-		$(document).ready(function() {
-			$('#loginform').ajaxForm(function() {
-				// if logged in the hide the login variables and show the userloggedin
-			});
-		});
 
-		$('#username').keypress(function(event) {
-			var max = 15;
-			var len = $(this).val().length;
-
-			if (event.which < 0x20) {
-				// e.which < 0x20, then it's not a printable character
-    	      // e.which === 0 - Not a character
-    	      return; // Do nothing
-    	    }
-
-    	    if (len >= max) {
-				event.preventDefault();
-			}
-
-		});
-
-		$('#username').keyup(function(event) {
-			var max = 15;
-			var len = $(this).val().length;
-			var char = max - len;
-
-			$('#textleft1').text(char + ' characters left');
-
-		});
-
-	});
+		function verifyLogin()
+		{
+			var username = document.getElementById("username");
+			var pwd = document.getElementById("pwd");
+			var re = /((?=.*[a-z])(?=.*\d)(?=.*[@#$%])(?=.*[A-Z]).{6,16})/i;
+			if(username.value.length > 4 && pwd.value.match(re))
+				document.jForm.submit();
+			else
+				document.getElementById("error").innerHTML="Failed Login";
+		}
+		
 </script>
 
 <title>Welcome!</title>
@@ -50,26 +28,25 @@
 
 <body>
 	<div class="Welcome">
-
+<form id="jForm" name="jForm" method="post" action="inventory.jsp"> </form>
 
 		<h1 align="center">WELCOME</h1>
 
-		<form id="loginform" name="loginform" method="post" action="inventory.jsp">
+		<form id="loginform" name="loginform" method="post" action="javascript:verifyLogin()">
 			<table>
 				<tr>
 					<td><label for="username">User Name:</label> <input
 						type="text" name="username" id="username" value="" /></td>
-						<div align="center" id="textleft1">10 characters left</div>
 				</tr>
 				<tr>
 					<td><label for="pwd">Password:</label> <input type="password"
 						name="pwd" id="pwd" value="" /></td>
-						<div align="center" id="textleft2">10 characters left</div>
 				</tr>
 				<tr>
 					<td><input type="submit" name="login" id="login" value="Login" /></td>
 				</tr>
 			</table>
+			<div style="color: red" id="error"></div>
 		</form>
 
 		<form action="register.jsp" method="post">
