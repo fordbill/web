@@ -19,7 +19,7 @@ public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/** 
-	 * Defer to doPost
+	 * Defer to doPostf
 	 */
 	public void doGet (HttpServletRequest req, HttpServletResponse rsp) throws ServletException, IOException {
 		doPost(req, rsp);
