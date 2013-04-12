@@ -1,6 +1,5 @@
 package beans;
 
-import java.awt.Window;
 import java.io.IOException;
 import java.sql.*;
 import javax.servlet.ServletException;
@@ -50,20 +49,18 @@ public class GetItems extends HttpServlet {
 		} catch (NumberFormatException e) {
 		}
 
-		if (!test) {
-			// Get the value of the filter parameter
-			String filter = req.getParameter("filter");
-			boolean usefilter = true;
+		// Get the value of the filter parameter
+		String filter = req.getParameter("filter");
+		boolean usefilter = true;
 
-			if (filter == null || filter == "") {
-				usefilter = false;
-			}
+		if (filter == null || filter == "") {
+			usefilter = false;
+		}
 
-			boolean useorderby = true;
-			String sortby = req.getParameter("sortby");
-			if (sortby == null || sortby == "") {
-				useorderby = false;
-			}
+		boolean useorderby = true;
+		String sortby = req.getParameter("sortby");
+		if (sortby == null || sortby == "") {
+			useorderby = false;
 		}
 
 		int DisplayCount = 10;
@@ -150,7 +147,7 @@ public class GetItems extends HttpServlet {
 				obj.put("value", "10000.00");
 				obj.put("serial", "98712345");
 				obj.put("date", "2013-04-12");
-				obj.put("fname","necklace.jpg");
+				obj.put("fname", "necklace.jpg");
 				Items.put(obj);
 
 				obj = new JSONObject();
@@ -159,7 +156,7 @@ public class GetItems extends HttpServlet {
 				obj.put("value", "10.00");
 				obj.put("serial", "V12345678");
 				obj.put("date", "2013-04-12");
-				obj.put("fname","car.jpg");
+				obj.put("fname", "car.jpg");
 				Items.put(obj);
 
 				obj = new JSONObject();
@@ -168,7 +165,7 @@ public class GetItems extends HttpServlet {
 				obj.put("value", "100.00");
 				obj.put("serial", "98712345");
 				obj.put("date", "2013-04-12");
-				obj.put("fname","xbox.jpg");
+				obj.put("fname", "xbox.jpg");
 				Items.put(obj);
 
 				obj = new JSONObject();
@@ -177,7 +174,7 @@ public class GetItems extends HttpServlet {
 				obj.put("value", "500.00");
 				obj.put("serial", "98712345");
 				obj.put("date", "2013-04-12");
-				obj.put("fname","laptop.jpg");
+				obj.put("fname", "laptop.jpg");
 				Items.put(obj);
 
 			} catch (JSONException e) {
