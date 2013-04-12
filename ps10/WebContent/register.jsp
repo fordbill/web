@@ -103,6 +103,34 @@
 		});
 
 	});
+	
+	function verify()
+	{
+		
+		var login = document.getElementById("login");
+		var pwd1 = document.getElementById("pwd1");
+		var pwd2 = document.getElementById("pwd2");
+		var first = document.getElementById("firstName");
+		var last = document.getElementById("lastName");
+		var phone = document.getElementById("phone");
+		var address = document.getElementById("address");
+		var re = /((?=.*[a-z])(?=.*\d)(?=.*[@#$%])(?=.*[A-Z]).{6,16})/i;
+		
+		
+		if((login.value.length > 4) && (pwd1.value.match(re)) && (pwd1.value == pwd2.value)
+				&& (first.value.length > 2)  && (last.value.length > 4)  && (phone.value.length == 10)
+				&& (address.value.length > 15))
+		{
+			document.register_form.submit();
+		}
+		else
+		{
+			document.getElementById("error").innerHTML="Failed Login. ";
+		}
+			
+	}
+	
+	
 </script>
 
 
@@ -110,16 +138,13 @@
 <title>Registration Page</title>
 
 
-
 </head>
-
-<<<<<<< HEAD
 <body class = "login">
 	<div align="center" class="register">
 		<form id="register_form" name="register_form" method="post" action="Register">
 			<h1>Please Register.</h1>
 			<br>
-			 
+			 <div style="color:#FF0000" align="center" id="error"></div>
 			<label for="login">Login:</label> 
 			<input type="text" 	name="login" size="18" tabindex=1 id="login" />
 			<div align="center" id="textleft2">15 characters left</div>
@@ -164,32 +189,11 @@
 			
 			<br>
 			<br> 
-			
+			</form>
+			<form id="jForm" name="jForm" method="post" action="javascript:verify()"> 
 			<input type="submit" name="register" tabindex=6 id="register" value="Register" /> 
-			<br>
-			<br>
-		</form>
-=======
-<body>
-<div align="center" class="register">
-  <form id="register_form" name="register_form" method="post" action="Register">
-  <h1>Please Register. :)</h1>
-<br>
-      <label for="login">Login:</label>
-      <input type="text" name="login" size="18" tabindex=1 id="login" />
-      <div align="center" id="textleft2">15 characters left</div>
-<br>
-      <label for="pwd1">Password:</label>
-      <input type="password" name="pwd1" tabindex=2 id="pwd1" />
-      <div align="center" id="textleft01">10 characters left</div>
-<br>
-      <label for="pwd2">Verify Password:</label>
-      <input type="password" name="pwd2" tabindex=3 id="pwd2" />
-   <br>
-      <label for="firstName">First Name:</label>
-      <input type="text" name="firstName" size="20" tabindex=4 id="firstName" />
->>>>>>> branch 'master' of https://github.com/fordbill/web.git
-
+			</form>
+		
 		<form action="index.jsp" method="post">
 			<p align="center">
 			<input type="submit" name="cancel" tabindex=7 id="cancel" value="Cancel" />
