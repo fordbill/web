@@ -8,6 +8,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/billf/Dropbox/Personal/School/S13/CS4540/Java/Ajax/WebContent/WEB-INF/lib/json.jar"/>
+	<classpathentry kind="lib" path="/Users/AlmaKnudson/web/ps10/WebContent/WEB-INF/lib/json.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

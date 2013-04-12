@@ -109,6 +109,7 @@
 		var last = document.getElementById("lastName");
 		var phone = document.getElementById("phone");
 		var address = document.getElementById("address");
+		
 		var re = /((?=.*[a-z])(?=.*\d)(?=.*[@#$%])(?=.*[A-Z]).{6,16})/i;
 		
 		if((login.value.length > 4) && (pwd1.value.match(re)) && (pwd1.value == pwd2.value)
@@ -132,7 +133,7 @@
 </head>
 <body class = "login">
 	<div align="center" class="register">
-		<form id="register_form" name="register_form" method="post" action="/Register" >
+		<form id="register_form" name="register_form" method="post" action="Register" >
 			<h1>Please Register</h1>
 			<br>
 			<div style="color:#FF0000" align="center" id="error"></div>
