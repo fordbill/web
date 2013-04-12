@@ -54,7 +54,7 @@
 
 		<h1 align="center">WELCOME</h1>
 
-		<form id="loginform" name="loginform" method="post" action="inventory.jsp">
+		<form id="loginform" name="loginform" method="post" action="Getitems">
 			<table>
 				<tr>
 					<td><label for="username">User Name:</label> <input
@@ -83,9 +83,9 @@
 		<blockquote>
 			<p>Home Inventory. </p>
 		</blockquote>
-		<div class="intro" width="20%">
+		<div class="intro">
 		Home Inventory is used to keep track of all your valuables.  This could include your car, lawn mower, 
-		big screen TV or Jewlrey.  You can take pictures of all of these items and store them into the database.
+		big screen TV or Jewelry.  You can take pictures of all of these items and store them into the database.
 		Then if a fire, earthquake, or burglary happens you can login and print a report for any missing item.
 		</div>
 
