@@ -69,9 +69,9 @@ public class Register extends HttpServlet {
 				
 				//Register User with DB wasn't working :(
 				
-				if (registerUser(credentials))
+				//if (registerUser(credentials))
 					req.getRequestDispatcher("/WEB-INF/views/success.jsp").forward(req, rsp);
-				else req.getRequestDispatcher("/register.jsp").forward(req, rsp);
+			//	else req.getRequestDispatcher("/register.jsp").forward(req, rsp);
 
 	}
 

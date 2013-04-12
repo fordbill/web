@@ -17,6 +17,7 @@
 				alert("Thank you for your comment!");
 			});
 		});
+		//NICE!
 
 
 		$('#address').keypress(function(event) {
