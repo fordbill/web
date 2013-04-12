@@ -132,7 +132,7 @@
 </head>
 <body class = "login">
 	<div align="center" class="register">
-		<form id="register_form" name="register_form" method="post" action="Register" >
+		<form id="register_form" name="register_form" method="post" action="/Register" >
 			<h1>Please Register</h1>
 			<br>
 			<div style="color:#FF0000" align="center" id="error"></div>
