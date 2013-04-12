@@ -18,10 +18,10 @@
 			filter : $('#filter').val()
 		}, refresh);
 	}
-	fs
+	
 	function refresh(result) {
 		var contents = "<tr><th>Category</th><th>Description</th><th>Value</th>"
-				+ "<th>Serial #</th><th>Date</th><th>Picture</th></tr>";
+				+ "<th>Serial Number</th><th>Date</th><th>Picture</th></tr>";
 
 		for ( var i = 0; i < result.Items.length; i++) {
 			contents += "<tr><td>" + result.Items[i].category + "</td><td>"
