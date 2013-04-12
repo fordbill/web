@@ -45,8 +45,8 @@
 				<tr>
 					<td><input type="submit" name="login" id="login" value="Login" /></td>
 				</tr>
-				<div style="color: red" id="error"></div>
 			</table>
+			<div style="color: red" id="error"></div>
 		</form>
 
 		<form action="register.jsp" method="post">
@@ -60,9 +60,9 @@
 		<blockquote>
 			<p>Home Inventory. </p>
 		</blockquote>
-		<div class="intro" width="20%">
+		<div class="intro">
 		Home Inventory is used to keep track of all your valuables.  This could include your car, lawn mower, 
-		big screen TV or Jewlery.  You can take pictures of all of these items and store them into the database.
+		big screen TV or Jewelry.  You can take pictures of all of these items and store them into the database.
 		Then if a fire, earthquake, or burglary happens you can login and print a report for any missing item.
 		</div>
 

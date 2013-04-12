@@ -127,7 +127,6 @@
 		{
 			document.getElementById("error").innerHTML="Failed Login. ";
 		}
-			
 	}
 	
 	
@@ -141,58 +140,44 @@
 </head>
 <body class = "login">
 	<div align="center" class="register">
-		<form id="register_form" name="register_form" method="post" action="Register">
-			<h1>Please Register.</h1>
+		<form id="register_form" name="register_form" method="post" action="Register" >
+			<h1>Please Register</h1>
 			<br>
-			 <div style="color:#FF0000" align="center" id="error"></div>
+			<div style="color:#FF0000" align="center" id="error"></div>
 			<label for="login">Login:</label> 
 			<input type="text" 	name="login" size="18" tabindex=1 id="login" />
 			<div align="center" id="textleft2">15 characters left</div>
-			
 			<br> 
 			<br> 
-			
 			<label for="pwd1">Password:</label> 
 			<input type="password" name="pwd1" tabindex=2 id="pwd1" /> 
-			
 			<br> 
 			<br>
-			 
 			<label for="pwd2">Verify Password:</label> 
 			<input	type="password" name="pwd2" tabindex=3 id="pwd2" /> 
-			
 			<br> 
 			<br> 
-			
 			<label	for="firstName">First Name:</label> 
 			<input type="text" 	name="firstName" size="20" tabindex=4 id="firstName" /> 
-			
 			<br> 
 			<br> 
-			
 			<label for="lastName">Last Name:</label> 
 			<input type="text" name="lastName" size="20" tabindex=5 id="lastName" /> 
-			
 			<br>
 			<br>
-			 
 			<label for="phone">Phone:</label>
 			<input type="text" name="phone" size="16" tabindex=5 id="phone" />
 			<div align="center" id="textleft1">10 characters left</div>
-			
 			<br>
 			<br> 
-			
 			<label for="address">Address:</label>
 			<textarea cols="30" rows="4" name="address" tabindex=5 id="address"></textarea>
 			<div align="center" id="textleft">45 characters left</div>
+		</form>
 			
-			<br>
-			<br> 
-			</form>
-			<form id="jForm" name="jForm" method="post" action="javascript:verify()"> 
+		<form id="jForm" name="jForm" method="post" action="javascript:verify()"> 
 			<input type="submit" name="register" tabindex=6 id="register" value="Register" /> 
-			</form>
+		</form>
 		
 		<form action="index.jsp" method="post">
 			<p align="center">
