@@ -17,8 +17,8 @@
 			});
 		});
 
-		$('#address').keypress(function(event) {
-			var max = 45;
+		$('#username').keypress(function(event) {
+			var max = 15;
 			var len = $(this).val().length;
 
 			if (event.which < 0x20) {
@@ -33,12 +33,12 @@
 
 		});
 
-		$('#address').keyup(function(event) {
-			var max = 45;
+		$('#username').keyup(function(event) {
+			var max = 15;
 			var len = $(this).val().length;
 			var char = max - len;
 
-			$('#textleft').text(char + ' characters left');
+			$('#textleft1').text(char + ' characters left');
 
 		});
 
@@ -59,10 +59,12 @@
 				<tr>
 					<td><label for="username">User Name:</label> <input
 						type="text" name="username" id="username" value="" /></td>
+						<div align="center" id="textleft1">10 characters left</div>
 				</tr>
 				<tr>
 					<td><label for="pwd">Password:</label> <input type="password"
 						name="pwd" id="pwd" value="" /></td>
+						<div align="center" id="textleft2">10 characters left</div>
 				</tr>
 				<tr>
 					<td><input type="submit" name="login" id="login" value="Login" /></td>
@@ -79,7 +81,7 @@
 
 
 		<blockquote>
-			<p>We are the BEST. </p>
+			<p>Home Inventory. </p>
 		</blockquote>
 		<div class="intro" width="20%">
 		Home Inventory is used to keep track of all your valuables.  This could include your car, lawn mower, 
