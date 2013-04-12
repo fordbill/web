@@ -12,7 +12,7 @@ import java.util.*;
 import beans.*;
 
 /**
- * Records a registration in the servlet context.
+ * Records a registration in the servlet context.  THIS IS THE REAL THING.
  */
 @WebServlet("/Register")
 public class Register extends HttpServlet {
