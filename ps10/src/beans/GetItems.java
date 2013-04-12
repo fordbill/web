@@ -1,5 +1,6 @@
 package beans;
 
+import java.awt.Window;
 import java.io.IOException;
 import java.sql.*;
 import javax.servlet.ServletException;
@@ -8,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.*;
-
+import demo.Helpers.*;
 import demo.Utils;
 
 @WebServlet("/Getitems")
@@ -50,18 +51,20 @@ public class GetItems extends HttpServlet {
 		} catch (NumberFormatException e) {
 		}
 
-		// Get the value of the filter parameter
-		String filter = req.getParameter("filter");
-		boolean usefilter = true;
+		if (!test) {
+			// Get the value of the filter parameter
+			String filter = req.getParameter("filter");
+			boolean usefilter = true;
 
-		if (filter == null || filter == "") {
-			usefilter = false;
-		}
+			if (filter == null || filter == "") {
+				usefilter = false;
+			}
 
-		boolean useorderby = true;
-		String sortby = req.getParameter("sortby");
-		if (sortby == null || sortby == "") {
-			useorderby = false;
+			boolean useorderby = true;
+			String sortby = req.getParameter("sortby");
+			if (sortby == null || sortby == "") {
+				useorderby = false;
+			}
 		}
 
 		int DisplayCount = 10;
@@ -177,7 +180,7 @@ public class GetItems extends HttpServlet {
 				Items.put(obj);
 
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 
@@ -198,6 +201,7 @@ public class GetItems extends HttpServlet {
 		rsp.setContentType("application/json");
 		rsp.getWriter().print(result);
 		rsp.getWriter().close();
+		req.getRequestDispatcher("/inventory.jsp").forward(req, rsp);
 
 	}
 }

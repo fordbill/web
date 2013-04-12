@@ -54,7 +54,7 @@
 
 		<h1 align="center">WELCOME</h1>
 
-		<form id="loginform" name="loginform" method="post" action="Getitems">
+		<form id="loginform" name="loginform" method="post" action="inventory.jsp">
 			<table>
 				<tr>
 					<td><label for="username">User Name:</label> <input
