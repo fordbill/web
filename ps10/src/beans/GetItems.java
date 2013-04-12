@@ -11,9 +11,7 @@ import org.json.*;
 
 import demo.Utils;
 
-
-
-@WebServlet("/GetPatrons")
+@WebServlet("/Getitems")
 public class GetItems extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,15 +33,15 @@ public class GetItems extends HttpServlet {
 		// Turn off caching and grab the incoming prefix parameter
 		rsp.setHeader("Cache-Control", "no-cache");
 		rsp.setHeader("Pragma", "no-cache");
-		
-		String login= (String) req.getAttribute("login");
-		login = "user";
+		boolean test = true;
+
+		String login = (String) req.getAttribute("login");
+		if (test)
+			login = "user";
 		if (login == null) {
 			// not logged in
 			req.getRequestDispatcher("/index.jsp").forward(req, rsp);
 		}
-
-		
 
 		// Get the value of the offset parameter
 		int offset = 0;
@@ -76,72 +74,112 @@ public class GetItems extends HttpServlet {
 		boolean atTop = (offset == 0);
 		boolean atBottom = true;
 
-		try {
+		if (!test) {
+			try {
 
-			// Open a connections
+				// Open a connections
+				if (!test)
+					dbInventory = Utils.openConnection(this);
 
-			dbInventory= Utils.openConnection(this);
+				// Get the next 11 books. We only return 10 of them, but this
+				// will
+				// tell us
+				// if we're at the bottom.
 
-			// Get the next 11 books. We only return 10 of them, but this will
-			// tell us
-			// if we're at the bottom.
+				String query = "select * from inventory where login = ?";
 
-			String query = "select * from inventory where login = ?";
+				query += "order by ?";
+				// query += "limit ? " + "offset ?";
+				PreparedStatement stmt = dbInventory.prepareStatement(query);
+				stmt.setString(1, login);
+				/*
+				 * int paramcount = 1; if (usefilter) {
+				 * stmt.setString(paramcount++, "%" + filter + "%");
+				 * paramcount++; }
+				 * 
+				 * if (useorderby) { stmt.setString(paramcount++, sortby); }
+				 * 
+				 * 
+				 * stmt.setInt(paramcount++, DisplayCount + 1);
+				 * stmt.setInt(paramcount, offset * DisplayCount);
+				 */
+				ResultSet results = stmt.executeQuery();
 
-			
-			query += "order by ?";
-			//query += "limit ? " + "offset ?";
-			PreparedStatement stmt = dbInventory.prepareStatement(query);
-			stmt.setString(1, login);
-			/*
-			int paramcount = 1;
-			if (usefilter) {
-				stmt.setString(paramcount++, "%" + filter + "%");
-				paramcount++;
-			}
+				// Put the DisplayCount results into the array. If there is
+				// DisplayCount + 1, we're
+				// not yet at the bottom.
+				// user results.last() instead of count
+				int count = 0;
 
-			if (useorderby) {
-				stmt.setString(paramcount++, sortby);
-			}
-			
-			
-			stmt.setInt(paramcount++, DisplayCount + 1);
-			stmt.setInt(paramcount, offset * DisplayCount);
-			*/
-			ResultSet results = stmt.executeQuery();
+				while (results.next()) {
+					count++;
+					if (count > DisplayCount) {
+						atBottom = false;
+					} else {
+						// category description value serial date
 
-			// Put the DisplayCount results into the array. If there is
-			// DisplayCount + 1, we're
-			// not yet at the bottom.
-			// user results.last() instead of count
-			int count = 0;
-			
-			while (results.next()) {
-				count++;
-				if (count > DisplayCount) {
-					atBottom = false;
-				} else {
-					// category description value serial date
-					
-					JSONObject obj = new JSONObject();
-					obj.put("category", results.getString("category"));
-					obj.put("description", results.getString("description"));
-					obj.put("value", results.getString("value"));
-					obj.put("serial", results.getString("serial"));
-					obj.put("date", results.getString("date"));
-					Items.put(obj);
+						JSONObject obj = new JSONObject();
+						obj.put("category", results.getString("category"));
+						obj.put("description", results.getString("description"));
+						obj.put("value", results.getString("value"));
+						obj.put("serial", results.getString("serial"));
+						obj.put("date", results.getString("date"));
+						Items.put(obj);
+					}
 				}
+
+				// Clean up
+				results.close();
+				stmt.close();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				return;
+			} finally {
+				Utils.close(dbInventory);
+
 			}
+		} else {
+			try {
 
-			// Clean up
-			results.close();
-			stmt.close();
+				JSONObject obj = new JSONObject();
+				obj.put("category", "jewelry");
+				obj.put("description", "Diamond Necklace");
+				obj.put("value", "10000.00");
+				obj.put("serial", "98712345");
+				obj.put("date", "2013-04-12");
+				Items.put(obj);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			return;
-		} finally {
-			Utils.close(dbInventory);
+				obj = new JSONObject();
+
+				obj.put("category", "Car");
+				obj.put("description", "Ford Expedition");
+				obj.put("value", "10.00");
+				obj.put("serial", "V12345678");
+				obj.put("date", "2013-04-12");
+				Items.put(obj);
+
+				obj = new JSONObject();
+
+				obj.put("category", "Electronics");
+				obj.put("description", "XBox");
+				obj.put("value", "100.00");
+				obj.put("serial", "98712345");
+				obj.put("date", "2013-04-12");
+				Items.put(obj);
+				obj = new JSONObject();
+
+				obj.put("category", "Electronics");
+				obj.put("description", "Laptop");
+				obj.put("value", "500.00");
+				obj.put("serial", "98712345");
+				obj.put("date", "2013-04-12");
+				Items.put(obj);
+
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 		}
 
