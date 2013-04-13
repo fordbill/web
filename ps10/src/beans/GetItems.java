@@ -33,15 +33,15 @@ public class GetItems extends HttpServlet {
 		rsp.setHeader("Cache-Control", "no-cache");
 		rsp.setHeader("Pragma", "no-cache");
 		boolean test = false;
-
-		String login = (String) req.getAttribute("login");
+		System.out.println("Before Login");
+		beans.Login login = (beans.Login) req.getAttribute("login");
+		System.out.println("After Login");
 		
-		if (test)
-			login = "user";
 		if (login == null) {
-			// not logged in
 			req.getRequestDispatcher("/index.jsp").forward(req, rsp);
 		}
+		String username = login.getUsername();
+		String password = login.getPassword();
 
 		// Get the value of the offset parameter
 		int offset = 0;
@@ -86,12 +86,12 @@ public class GetItems extends HttpServlet {
 				// tell us
 				// if we're at the bottom.
 
-				String query = "select * from inventory where login = ?";
+				String query = "select * from inventory where login = ? and password = ?";
 
-				query += "order by ?";
 				// query += "limit ? " + "offset ?";
 				PreparedStatement stmt = dbInventory.prepareStatement(query);
-				stmt.setString(1, login);
+				stmt.setString(1, username);
+				stmt.setString(1, password);
 				/*
 				 * int paramcount = 1; if (usefilter) {
 				 * stmt.setString(paramcount++, "%" + filter + "%");
@@ -103,6 +103,7 @@ public class GetItems extends HttpServlet {
 				 * stmt.setInt(paramcount++, DisplayCount + 1);
 				 * stmt.setInt(paramcount, offset * DisplayCount);
 				 */
+
 				ResultSet results = stmt.executeQuery();
 
 				// Put the DisplayCount results into the array. If there is
@@ -122,9 +123,16 @@ public class GetItems extends HttpServlet {
 						obj.put("category", results.getString("category"));
 						obj.put("description", results.getString("description"));
 						obj.put("value", results.getString("value"));
+						obj.put("purchasedate",
+								results.getString("purchasedate"));
+						obj.put("warrantydate",
+								results.getString("warrantydate"));
+						obj.put("maintenancedate",
+								results.getString("maintenancedate"));
+						obj.put("vendorphone", results.getString("vendorphone"));
+						obj.put("vendor", results.getString("vendor"));
+						obj.put("picture", results.getString("picture"));
 						obj.put("serial", results.getString("serial"));
-						obj.put("date", results.getString("date"));
-						obj.put("fname", results.getString("fname"));
 						Items.put(obj);
 					}
 				}
@@ -139,48 +147,6 @@ public class GetItems extends HttpServlet {
 			} finally {
 				Utils.close(dbInventory);
 
-			}
-		} else {
-			try {
-				JSONObject obj = new JSONObject();
-				obj.put("category", "jewelry");
-				obj.put("description", "Diamond Necklace");
-				obj.put("value", "10000.00");
-				obj.put("serial", "98712345");
-				obj.put("date", "2013-04-12");
-				obj.put("fname", "necklace.jpg");
-				Items.put(obj);
-
-				obj = new JSONObject();
-				obj.put("category", "Car");
-				obj.put("description", "Ford Expedition");
-				obj.put("value", "10.00");
-				obj.put("serial", "V12345678");
-				obj.put("date", "2013-04-12");
-				obj.put("fname", "car.jpg");
-				Items.put(obj);
-
-				obj = new JSONObject();
-				obj.put("category", "Electronics");
-				obj.put("description", "XBox");
-				obj.put("value", "100.00");
-				obj.put("serial", "98712345");
-				obj.put("date", "2013-04-12");
-				obj.put("fname", "xbox.jpg");
-				Items.put(obj);
-
-				obj = new JSONObject();
-				obj.put("category", "Electronics");
-				obj.put("description", "Laptop");
-				obj.put("value", "500.00");
-				obj.put("serial", "98712345");
-				obj.put("date", "2013-04-12");
-				obj.put("fname", "laptop.jpg");
-				Items.put(obj);
-
-			} catch (JSONException e) {
-
-				e.printStackTrace();
 			}
 
 		}
@@ -201,6 +167,5 @@ public class GetItems extends HttpServlet {
 		rsp.getWriter().print(result);
 		rsp.getWriter().close();
 		req.getRequestDispatcher("/inventory.jsp").forward(req, rsp);
-
 	}
 }
