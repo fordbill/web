@@ -32,9 +32,10 @@ public class GetItems extends HttpServlet {
 		// Turn off caching and grab the incoming prefix parameter
 		rsp.setHeader("Cache-Control", "no-cache");
 		rsp.setHeader("Pragma", "no-cache");
-		boolean test = true;
+		boolean test = false;
 
 		String login = (String) req.getAttribute("login");
+		
 		if (test)
 			login = "user";
 		if (login == null) {

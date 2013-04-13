@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="style.css">
-<title>Hello USER!</title>
+<title>Hello ${credentials.firstName} !</title>
 </head>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" ></script>    
 <script>
@@ -27,9 +27,13 @@
 			contents += "<tr><td>" + result.Items[i].category + "</td><td>"
 					+ result.Items[i].description + "</td><td class='alnright'>"
 					+ result.Items[i].value + "</td><td>"
-					+ result.Items[i].serial + "</td><td>"
-					+ result.Items[i].date + "</td><td>"
-					+ result.Items[i].fname + "</td></tr>\n";
+					+ result.Items[i].purchasedate+ "</td><td>"
+					+ result.Items[i].warrantydate+ "</td><td>"
+					+ result.Items[i].maintencedate + "</td><td>"
+					+ result.Items[i].vendorphone + "</td><td>"
+					+ result.Items[i].vendor + "</td><td>"
+					+ result.Items[i].picture + "</td><td>"
+					+ result.Items[i].serial + "</td></tr>\n";
 
 		}
 		$('#invtable').html(contents);
@@ -59,7 +63,7 @@
 </script>
 <body onload="getInventory(0);">
 	<div class="user">
-		<h1 align="center">Welcome User</h1>
+		<h1 align="center">Welcome ${credentials.firstName}</h1>
 
 		<form id="form1" name="form1" method="post" action="index.jsp">
 			<input type="submit" name="Logout" id="logout" value="Logout" />
