@@ -1,12 +1,12 @@
 package beans;
 
-public class Authenticate 
+public class Login 
 {
 	private String username;
 	private String password;
 	
 	
-	public Authenticate(String u, String p)
+	public Login(String u, String p)
 	{
 		setUsername(u);
 		setPassword(p);

@@ -18,13 +18,13 @@ import beans.Credentials;
  * Servlet implementation class Login
  */
 @WebServlet("/Login")
-public class Login extends HttpServlet {
+public class Authenticate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public Authenticate() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,7 +45,7 @@ public class Login extends HttpServlet {
 		
 		String login = req.getParameter("username");
 		String pwd1 = req.getParameter("pwd");
-		beans.Authenticate l = new beans.Authenticate(login, pwd1);
+		beans.Login l = new beans.Login(login, pwd1);
 		// CHECK FIELDS..
 		req.setAttribute("login", "NOT RIGHT!");
 
